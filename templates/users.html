@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="static/img/Isotipo.png" type="image/x-icon">
+  <title>Telegram Teams | Administración de Usuarios</title>
+</head>
+<body class="poppins-regular">
+  <header id="header">
+    <nav class="nav-bar">
+      <ul class="nav-items d-flex" id="collapsible">
+        <li class="brand">
+          <a href="index.html" class="brand-name poppins-bold d-sm-none">
+            Telegram <span>Teams</span>
+          </a>
+          <a href="index.html">
+            <img src="static/img/Imagotipo.svg" alt="Logo" class="brand-logo d-none d-sm-inblock">
+          </a>
+        </li>
+        <li class="nav-item col-auto">
+          <h1>Administración de Usuarios</h1>
+        </li>
+        <li class="user-info">
+          <strong>Usuari@</strong>
+          <a href="http://saucem.github.io/TelegramTeams" class="btn btn-neutral-outline ml-2 d-none d-sm-inblock">Cerrar sesion</a>
+          <a href="http://saucem.github.io/TelegramTeams" class="d-sm-none">
+            <img src="static/img/box-arrow-left.svg" alt="Cerrar sesion" title="Cerrar sesion" width="24" class="text-icon">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="container mt-4 rounded bg-neutral-light" id="user-data">
+      <h2 class="col-12 text-center mt-2">Datos del usuario</h2>
+      <!-- <form action="#" method="post" class="col-12 d-flex justify-content-center" id="user-search-form">
+        <div class="col-sm-8 text-center">
+          <input type="search" name="user-search" id="user-search" class="input">
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-search search">
+            <span class="d-sm-none">
+              <img src="static/img/search.svg" alt="Buscar" title="buscar" class="text-icon">
+            </span>
+            <span class="d-none d-sm-inblock">Buscar</span>
+          </button>
+        </div>
+      </form> -->
+      <div class="line neutral-subtle d-sm-none"></div>
+      <form action="#" method="post" class="row-flex justify-content-center" id="user-data-form">
+        <input type="hidden" name="user-id" id="user-id">
+        <div class="input-group col-3">
+          <label for="user-name">Nombre y apellido</label>
+          <input type="text" class="input required" name="user-name" id="user-name">
+        </div>
+        <div class="input-group col-3">
+          <label for="user-email">Correo electronico</label>
+          <input type="email" class="input required" name="user-email" id="user-email">
+        </div>
+        <div class="input-group col-2">
+          <label for="user-phone">Telefono</label>
+          <input type="tel" class="input required" name="user-telephone" id="user-telephone">
+        </div>
+        <div class="input-group col-2">
+          <label for="user-password">Contraseña</label>
+          <input type="password" class="input required" name="user-password" id="user-password">
+        </div>
+        <div class="input-group col-2">
+          <label for="user-role">Rol</label>
+          <select class="input required" name="user-role" id="user-role">
+            <option value="user-user">Usuario</option>
+            <option value="user-admin">Administrador</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-secondary mb-3" id="user-save-btn">Guardar datos</button>
+      </form>
+    </div>
+    <div class="container mt-4 rounded bg-neutral-light" id="user-list">
+      <h2 class="col-12 text-center mt-2">Usuarios registrados</h2>
+      <table class="table stripped w-100 px-2" id="user-table">
+        <thead>
+          <tr class="text-start">
+            <th>Nombre completo</th>
+            <th>Correo electrónico</th>
+            <th>Teléfono</th>
+            <th>Contraseña</th>
+            <th>Rol</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-start">
+            <td>Mauro Saucedo</td>
+            <td>saucem@telegramteams.com</td>
+            <td>+54 011 6789-5432</td>
+            <td>********</td>
+            <td>Administrador</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <footer class="w-100">
+    <div class="row-flex justify-between">
+      <div class="col-auto status-info">
+        <p>Informacion del sistema</p>
+      </div>
+      <div class="col-2 status-info">
+        <p class="text-end" id="date-time"></p>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!--Provee ventanas de alerta amigables-->
+  <script src="../static/js/showtime.js"></script> <!--Muestra fecha y hora en la barra de estado-->
+  <script src="../static/js/formValidation.js"></script> <!--Valida los campos del formulario antes de enviarlos al Backend-->
+  <script src="../static/js/users-fetch.js"></script> <!--Gestiona la solicitud de datos al Backend-->
+</body>

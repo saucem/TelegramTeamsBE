@@ -3,7 +3,7 @@ const validate = (event) => {
   const currentForm = event.target;
   const inputs = document.querySelectorAll("#" + currentForm.id + " .input");
 
-  if (currentForm.id !== "formRegister"){ //Evita que capture la validación del formulario de registro
+  if (currentForm.id !== "user-search-form"){ //Evita que capture la validación del formulario de búsqueda
     var i;
     for (i = 0; i < inputs.length; i++){
       var input = inputs[i];
@@ -42,8 +42,8 @@ const validate = (event) => {
       } else {
         swal("¡Ingresaste a la plataforma!", "Ya podés comenzar a generar ventas.");
       }
-      //currentForm.submit();
-      currentForm.querySelector(".dismiss-modal").click();
+      currentForm.submit();
+      // currentForm.querySelector(".dismiss-modal").click();
     }
   }
 }
@@ -65,4 +65,3 @@ const toggleRequired = (event) =>{
 
 document.addEventListener("submit", validate);
 document.addEventListener("change", removeErrors);
-document.getElementById("useTelegram").addEventListener("change", toggleRequired);

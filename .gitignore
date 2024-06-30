@@ -38,5 +38,6 @@ Thumbs.db
 
 # Environment #
 ######################
-venv
+.venv
 .env
+.pyc
