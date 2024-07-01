@@ -32,7 +32,7 @@ async function fetchData(url, method, data = null) {
 * por medio del uso de template string de JS.
 */
 async function showUsers(){
-  let users = await fetchData(BASEURL+'/api/users/', 'GET');
+  let users = await fetchData(BASEURL+'/api/user/', 'GET');
   const tableUsers = document.querySelector('#user-table tbody');
   tableUsers.innerHTML='';
   users.forEach((user, index) => {
@@ -66,23 +66,24 @@ async function showUsers(){
 * @returns
 */
 async function saveUser(){
+  const userId = document.querySelector('#user-id').value;  
   const userName = document.querySelector('#user-name').value;  
-  const userEmail = document.querySelector('#user-mail').value;
+  const userEmail = document.querySelector('#user-email').value;
   const userTelephone = document.querySelector('#user-telephone').value;
   const userPassword = document.querySelector('#user-password').value;
   const userRole = document.querySelector('#user-role').value;
-  // ----------------------------------------------------------------------------------------------------------------
+ 
   //VALIDACION DE FORMULARIO
-  // if (!title || !director || !releaseDate || !banner) {
-  // Swal.fire({
-  // title: 'Error!',
-  // text: 'Por favor completa todos los campos.',
-  // icon: 'error',
-  // confirmButtonText: 'Cerrar'
-  // });
-  // return;
-  // }
-  // ----------------------------------------------------------------------------------------------------------------
+  if (!userName || !userEmail || !userTelephone || !userPassword) {
+  Swal.fire({
+    title: 'Error!',
+    text: 'Por favor completa todos los campos.',
+    icon: 'error',
+    confirmButtonText: 'Cerrar'
+    });
+    return;
+  }
+ 
   // Crea un objeto con los datos del usuario
   const userData = {
     name: userName,
@@ -94,18 +95,21 @@ async function saveUser(){
   let result = null;
   // Si hay un userId, realiza una petición PUT para actualizar el usuario existente
   if(userId!==""){
-    result = await fetchData(`${BASEURL}/api/users/${userId}`, 'PUT', userData);
+    result = await fetchData(`${BASEURL}/api/user/${userId}`, 'PUT', userData);
   }else{
     // Si no hay userId, realiza una petición POST para crear un nuevo usuario
-    result = await fetchData(`${BASEURL}/api/users/`, 'POST', userData);
+    result = await fetchData(`${BASEURL}/api/user/`, 'POST', userData);
   }
 const formUser = document.querySelector('#user-data-form');
-formUser.reset();
+formUser.reset(); //No borra los inputs del tipo "hidden", entonces hay que borrarlo a mano
+const idField = document.querySelector('#user-id');
+idField.value = null;
+alert(idField, userId);
 Swal.fire({
-title: 'Exito!',
-text: result.message,
-icon: 'success',
-confirmButtonText: 'Cerrar'
+  title: 'Exito!',
+  text: result.message,
+  icon: 'success',
+  confirmButtonText: 'Cerrar'
 })
 showUsers();
 }
@@ -119,10 +123,11 @@ function deleteUser(id){
   Swal.fire({
     title: "Esta seguro de eliminar el usuario?",
     showCancelButton: true,
-    confirmButtonText: "Eliminar",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "No, cancelar",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      let response = await fetchData(`${BASEURL}/api/users/${id}`, 'DELETE');
+      let response = await fetchData(`${BASEURL}/api/user/${id}`, 'DELETE');
       showUsers();
       Swal.fire(response.message, "", "success");
     }
@@ -136,7 +141,7 @@ function deleteUser(id){
 */
 async function updateUser(id){
   //Buscamos en el servidor el usuario de acuerdo al id
-  let response = await fetchData(`${BASEURL}/api/users/${id}`, 'GET');
+  let response = await fetchData(`${BASEURL}/api/user/${id}`, 'GET');
   
   const userId = document.querySelector('#user-id');
   const userName = document.querySelector('#user-name');
@@ -145,7 +150,7 @@ async function updateUser(id){
   const userPassword = document.querySelector('#user-password');
   const userRole = document.querySelector('#user-role');
   
-  userId.value = response.userid;
+  userId.value = response.id;
   userName.value = response.name;
   userEmail.value = response.email;
   userTelephone.value = response.telephone;
@@ -159,5 +164,7 @@ document.addEventListener('DOMContentLoaded',function(){
   const btnSaveUser = document.querySelector('#user-save-btn');
   //ASOCIAR UNA FUNCION AL EVENTO CLICK DEL BOTON
   btnSaveUser.addEventListener('click',saveUser);
+  // const formTarget = document.querySelector('#user-data-form');
+  // formTarget.addEventListener('submit', saveUser);
   showUsers();
 });

@@ -23,7 +23,7 @@
           </a>
         </li>
         <li class="nav-item col-auto">
-          <h1>Administración de Usuarios</h1>
+          <h1>Información del sistema</h1>
         </li>
         <li class="user-info">
           <strong>Usuari@</strong>
@@ -37,7 +37,7 @@
   </header>
   <main class="container">
     <div class="container mt-4 rounded bg-neutral-light" id="user-data">
-      <h2 class="col-12 text-center mt-2">Datos del usuario</h2>
+      <h2 class="col-12 text-center mt-2">Dashboard</h2>
       <!-- <form action="#" method="post" class="col-12 d-flex justify-content-center" id="user-search-form">
         <div class="col-sm-8 text-center">
           <input type="search" name="user-search" id="user-search" class="input">
@@ -51,7 +51,7 @@
           </button>
         </div>
       </form> -->
-      <div class="line neutral-subtle d-sm-none"></div>
+      <!-- <div class="line neutral-subtle d-sm-none"></div>
       <form action="#" method="post" class="row-flex justify-content-center" id="user-data-form">
         <input type="hidden" name="user-id" id="user-id">
         <div class="input-group col-3">
@@ -73,11 +73,11 @@
         <div class="input-group col-2">
           <label for="user-role">Rol</label>
           <select class="input required" name="user-role" id="user-role">
-            <option value="Usuario">Usuario</option>
-            <option value="Administrador">Administrador</option>
+            <option value="user-user">Usuario</option>
+            <option value="user-admin">Administrador</option>
           </select>
         </div>
-        <button class="btn btn-secondary mb-3" id="user-save-btn">Guardar datos</button>
+        <button type="submit" class="btn btn-secondary mb-3" id="user-save-btn">Guardar datos</button>
       </form>
     </div>
     <div class="container mt-4 rounded bg-neutral-light" id="user-list">
@@ -94,8 +94,15 @@
           </tr>
         </thead>
         <tbody>
+          <tr class="text-start">
+            <td>Mauro Saucedo</td>
+            <td>saucem@telegramteams.com</td>
+            <td>+54 011 6789-5432</td>
+            <td>********</td>
+            <td>Administrador</td>
+          </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
   </main>
   <footer class="w-100">
@@ -110,6 +117,6 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!--Provee ventanas de alerta amigables-->
   <script src="../static/js/showtime.js"></script> <!--Muestra fecha y hora en la barra de estado-->
-  <!-- <script src="../static/js/formValidation.js"></script> Valida los campos del formulario antes de enviarlos al Backend -->
+  <script src="../static/js/formValidation.js"></script> <!--Valida los campos del formulario antes de enviarlos al Backend-->
   <script src="../static/js/users-fetch.js"></script> <!--Gestiona la solicitud de datos al Backend-->
 </body>

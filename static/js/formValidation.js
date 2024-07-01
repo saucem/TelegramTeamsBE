@@ -55,13 +55,5 @@ const removeErrors = (event) =>{
   }
 }
 
-const toggleRequired = (event) =>{
-  const telegramPhone = document.querySelector("#telephone");
-  if (telegramPhone.classList.contains("has-error")){
-    telegramPhone.classList.remove("has-error");
-  }
-  telegramPhone.classList.toggle("required");
-}
-
 document.addEventListener("submit", validate);
 document.addEventListener("change", removeErrors);

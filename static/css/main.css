@@ -67,6 +67,7 @@ header{
 
 main{
   overflow: auto;
+  padding-bottom: 10vh;
 }
 
 footer{
@@ -729,6 +730,10 @@ strong{
 
   .desaturated{
     filter: grayscale();
+  }
+
+  .invisible{
+    visibility: hidden;
   }
 
   .has-error{

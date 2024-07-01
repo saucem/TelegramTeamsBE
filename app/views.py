@@ -1,8 +1,17 @@
-from flask import jsonify, request
+from flask import jsonify, request, render_template
 from app.models import User
 
 def index():
-    return '<h1>TelegramTeams - BACK END 🐍</h1>'
+    return render_template('index.html') #Renderiza un archivo HTML incluido en la carpeta "templates" con datos fijos y/o variables
+
+def useradmin():
+    return render_template('users.html')
+
+def customeradmin():
+    return render_template('customers.html')
+
+def dashboard():
+    return render_template('dashboard.html')
 
 #difinir funcion para recuperar usuarios
 def get_all_users():
@@ -17,8 +26,8 @@ def create_user():
         name=data['name'],
         password=data['password'],
         email=data['email'],
-        rol=data['rol'],
-        phone=data['phone']
+        role=data['role'],
+        telephone=data['telephone']
     )
     new_user.save()
     return jsonify({'message':'Usuario creado con exito!'}), 201
@@ -32,8 +41,8 @@ def update_user(user_id):
     user.name = data['name']
     user.password = data['password']
     user.email = data['email']
-    user.rol = data['rol']
-    user.phone = data['phone']
+    user.role = data['role']
+    user.telephone = data['telephone']
     user.save()
     return jsonify({'message': 'Usuario actualizado correctamente!'})
 
