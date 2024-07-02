@@ -7,7 +7,7 @@ from app.database import init_app
 app = Flask(__name__)
 
 init_app(app)
-CORS(app)
+CORS(app, allow_all_origins=True)
 
 app.route('/', methods=['GET'])(index)
 #-----------------------------------------------------------------------------------------------------------------------
