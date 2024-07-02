@@ -10,12 +10,6 @@ init_app(app)
 CORS(app, allow_all_origins=True)
 
 app.route('/', methods=['GET'])(index)
-#-----------------------------------------------------------------------------------------------------------------------
-app.route('/user/admin', methods=['GET'])(useradmin)
-app.route('/customer/admin', methods=['GET'])(customeradmin)
-app.route('/dashboard', methods=['GET'])(dashboard)
-#-----------------------------------------------------------------------------------------------------------------------
-app.route('/api/user/', methods=['GET'])(get_all_users)
 app.route('/api/user/', methods=['POST'])(create_user)
 app.route('/api/user/<int:user_id>', methods=['GET'])(get_user)
 app.route('/api/user/<int:user_id>', methods=['PUT'])(update_user)
